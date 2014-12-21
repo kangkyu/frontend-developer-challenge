@@ -6,7 +6,20 @@
 </head>
 <body> 
 
+<div ng-app="app">
 
+<div ng-controller="MembersCtrl">
+  <table class="table table-hover">
+    <tr ng-repeat="member in members">
+      <td>{{member.firstName}}</td>
+      <td>{{member.lastName}}</td>
+      <td>{{member.screenName}}</td>
+      <td>{{member.location}}</td>
+    </tr>
+  </table>
+</div>
+
+</div>
 
 <script text="text/javascript" src="vendor/angularjs/angular.min.js"></script>
 <script type="text/javascript" src="app/js/main.js"></script>
