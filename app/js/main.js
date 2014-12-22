@@ -1,43 +1,7 @@
 var app = angular.module('app', []);
 
-app.controller('MembersCtrl', function($scope) {
-  $scope.members = memberJSON;
+app.controller('MembersCtrl', function($scope, $http) {
+  $http.get('members.json').success(function(data){
+    $scope.members = data;
+  });
 });
-
-var memberJSON = [
-  {
-    "_id": "53d1fbbbcb525ec01730eb76",
-    "firstName": "John",
-    "lastName": "Doe",
-    "screenName": "Johnny123",
-    "location": "Whittier"
-  },
-  {
-    "_id": "53d1fbbbcb525ec01730eb77",
-    "firstName": "Jane",
-    "lastName": "Doe",
-    "screenName": "BigMamma",
-    "location": "Los Angeles"
-  },
-  {
-    "_id": "53d1fbbbcb525ec01730eb78",
-    "firstName": "Tim",
-    "lastName": "Tanner",
-    "screenName": "TinyTim",
-    "location": "Torrance"
-  },
-  {
-    "_id": "53d1fbbbcb525ec01730eb79",
-    "firstName": "Juan",
-    "lastName": "Kerr",
-    "screenName": "CatLuver99",
-    "location": "Santa Monica"
-  },
-  {
-    "_id": "53d1fbbbcb525ec01730eb80",
-    "firstName": "Maria",
-    "lastName": "Martinez",
-    "screenName": "MaryMart",
-    "location": "Glendale"
-  }
-];
