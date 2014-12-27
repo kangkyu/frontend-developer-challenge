@@ -10,19 +10,9 @@
 </head>
 <body> 
 
-<div>
+<div class="container-fluid">
 
-<div ng-controller="MembersIndexCtrl">
-  <table class="table table-hover">
-    <tr ng-repeat="member in members">
-      <td><a href="#/members/{{member._id}}">{{member._id}}</a></td>
-      <td>{{member.firstName}}</td>
-      <td>{{member.lastName}}</td>
-      <td>{{member.screenName}}</td>
-      <td>{{member.location}}</td>
-    </tr>
-  </table>
-</div>
+  <div ng-view>
 
 </div>
 
