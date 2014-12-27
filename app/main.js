@@ -6,8 +6,6 @@ app.config(['$routeProvider', function($routeProvider) {
       }).when('/members/:memberId', {
         templateUrl: 'app/partials/member_show.html',
         controller: "MemberShowCtrl"
-      }).when('/businesses', {
-        templateUrl: 'app/partials/business_index.html',
       }).when('/businesses/:businessName', {
         templateUrl: 'app/partials/business_show.html',
       }).when('/reviews', {
@@ -57,9 +55,36 @@ squealControllers.controller('ReviewIndexCtrl', ['$scope', '$http', function($sc
   });
 }]);
 
-squealControllers.controller('BusinessIndexCtrl', function($scope) {
-  $scope.message = 'This is BusinessIndexCtrl (businesses - companies) screen';
-});
+squealControllers.controller('BusinessIndexCtrl', ['$scope', '$http', function($scope, $http) {
+
+  $scope.search = function() {
+    return $http.get('app/reviews.json').success(function(data) {
+      $scope.reviews = data;
+    });
+  }
+
+  function getBusinessNames(arr) {
+    var names = [];
+    for (var d=0; d < arr.length; d +=1) {
+      names.push(arr[d].businessName);
+    }
+    return names;
+  }
+
+  var businessUnique = function(a) {
+    return a.reduce(function(p,c){
+      if (p.indexOf(c) < 0) p.push(c);
+      return p;
+    }, []);
+  };
+
+  $scope.search().then(function() {
+    $scope.names = businessUnique(getBusinessNames($scope.reviews));
+  });
+
+  // $scope.message = 'This is BusinessIndexCtrl (businesses - companies) screen';
+
+}]);
 
 squealControllers.controller('BusinessShowCtrl', ['$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
@@ -70,17 +95,26 @@ squealControllers.controller('BusinessShowCtrl', ['$scope', '$routeParams', '$ht
       });
     }
 
-    function getById(arr, name) {
+    function getByName(arr, name) {
       for (var d=0; d < arr.length; d +=1) {
         if (arr[d].businessName === name) {
           reviews.push(arr[d])
-          return reviews;
         }
       }
+      return reviews;
+    }
+
+    function getAveRating(arr) {
+      var total = 0
+      for (var d=0; d < arr.length; d +=1) {
+        total += parseFloat(arr[d].rating)
+      }
+      return (total / arr.length).toPrecision(2);
     }
 
     $scope.search().then(function() {
-      $scope.reviews = getById($scope.reviews, $routeParams.businessName);
+      $scope.reviews = getByName($scope.reviews, $routeParams.businessName);
+      $scope.ratingAve = getAveRating($scope.reviews)
     });
 
     $scope.businessName = $routeParams.businessName;

@@ -10,9 +10,32 @@
 </head>
 <body> 
 
-<div class="container-fluid">
+<div class="container">
+<div class="page-header">
+  <h1>Squeal <small>Local business reviews</small></h1>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <div ng-controller="MemberIndexCtrl">
+      <h2><span class="label label-primary">Reviewers</span></h2>
+      <div ng-repeat="member in members">
+        <a class="btn btn-link" href="#/members/{{member._id}}/">{{ member.firstName + " " + member.lastName }}</a>
+      </div>
+    </div>
+    <div ng-controller="BusinessIndexCtrl">
+      <h2><span class="label label-success">Companies</span></h2>
+      <div ng-repeat="name in names">
+        <a class="btn btn-link" href="#/businesses/{{name}}/">{{name}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-9">
 
-  <div ng-view>
+    <div ng-view>
+
+  </div>
+
+</div>
 
 </div>
 

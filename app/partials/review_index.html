@@ -1,17 +1,3 @@
-<div class="row">
-<div ng-controller="MemberIndexCtrl">
-
-  <div class="col-md-2">
-
-    <h2>Reviewers</h2>
-    <div ng-repeat="member in members">
-      <a ng-click="query.reviewerId = member._id">{{ member.firstName + " " + member.lastName }}</a>
-    </div>
-    <!-- Search: <input ng-model="query._id"> -->
-
-  </div>
-  <div class="col-md-10">
-
 <div ng-controller="ReviewIndexCtrl">
   <table class="table table-hover">
     <tr>
@@ -21,14 +7,12 @@
       <td>comment</td>
       <td>rating</td>
     </tr>
-    <tr ng-repeat="review in reviews|filter:query">
-      <td><a href="#/reviews/{{review._id}}">{{review._id}}</a></td>
+    <tr ng-repeat="review in reviews">
+      <td>{{review._id}}</td>
       <td>{{review.businessName}}</td>
       <td><a href="#/members/{{review.reviewerId}}">{{review.reviewerId}}</a></td>
       <td>{{review.comment}}</td>
       <td>{{review.rating}}</td>
     </tr>
   </table>
-</div>
-
 </div>
