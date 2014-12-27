@@ -1,8 +1,8 @@
-<h1>memberId: {{member._id}}</h1>
+<div ng-controller="MemberShowCtrl">
+
+<h1 class="text-center">memberId: {{member._id}}</h1>
 
 <div class="col-md-2">
-
-  <div ng-controller="MemberShowCtrl">
 
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -34,13 +34,13 @@
 
     <tr ng-repeat="review in reviews|filter:query">
       <td>{{review._id}}</td>
-      <td>{{review.businessName}}</td>
-      <td><a href="#/members/{{review.reviewerId}}">{{review.reviewerId}}</a></td>
+      <td><a href="#/businesses/{{review.businessName}}">{{review.businessName}}</a></td>
+      <td>{{review.reviewerId}}</td>
       <td>{{review.comment}}</td>
       <td>{{review.rating}}</td>
     </tr>
   </table>
 
   </div>
-  
+
 </div>

@@ -18,8 +18,8 @@
       <td>rating</td>
     </tr>
     <tr ng-repeat="review in reviews|filter:query">
-      <td><a href="#/reviews/{{review._id}}">{{review._id}}</a></td>
-      <td>{{review.businessName}}</td>
+      <td>{{review._id}}</td>
+      <td><a href="#/businesses/{{review.businessName}}">{{review.businessName}}</a></td>
       <td><a href="#/members/{{review.reviewerId}}">{{review.reviewerId}}</a></td>
       <td>{{review.comment}}</td>
       <td>{{review.rating}}</td>
