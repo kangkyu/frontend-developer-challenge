@@ -1,0 +1,37 @@
+<div ng-controller="MemberShowCtrl">
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{member.firstName}} {{member.lastName}}</h3>
+    </div>
+    <div class="panel-body">
+      <p><strong>firstName</strong> {{member.firstName}}</p>
+      <p><strong>lastName</strong> {{member.lastName}}</p>
+      <p><strong>screenName</strong> {{member.screenName}}</p>
+      <p><strong>location</strong> {{member.location}}</p>
+    </div>
+  </div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Reviews</h3>
+  </div>
+
+  <div ng-controller="ReviewIndexCtrl">
+    <p type="hidden" ng-model="query.reviewerId = member._id"></p>
+
+    <table class="table table-hover">
+      <tr>
+        <th>businessName</th>
+        <th>comment</th>
+        <th>rating</th>
+      </tr>
+
+      <tr ng-repeat="review in reviews|filter:query">
+        <td><a href="#/businesses/{{review.businessName}}">{{review.businessName}}</a></td>
+        <td>{{review.comment}}</td>
+        <td>{{review.rating}}</td>
+      </tr>
+    </table>
+
+  </div>
+</div>
