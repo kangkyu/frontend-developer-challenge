@@ -3,13 +3,10 @@ var app = angular.module('memberApp', ['ngRoute']);
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/members', {
         templateUrl: 'app/partials/member_index.html',
-        controller: 'MemberIndexCtrl'
       }).when('/businesses', {
         templateUrl: 'app/partials/business_index.html',
-        controller: 'BusinessIndexCtrl'
       }).when('/reviews', {
         templateUrl: 'app/partials/review_index.html',
-        controller: 'ReviewIndexCtrl'
       }).otherwise({
         redirectTo: '/members'
       });
@@ -29,8 +26,6 @@ app.controller('ReviewIndexCtrl', ['$scope', '$http', function($scope, $http) {
   });
 }]);
 
-
 app.controller('BusinessIndexCtrl', function($scope) {
-
   $scope.message = 'This is BusinessIndexCtrl (businesses - companies) screen';
 });

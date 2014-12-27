@@ -1,3 +1,30 @@
-<h2>Companies</h2>
- 
-{{ message }}
+<div class="row">
+<div ng-controller="ReviewIndexCtrl">
+
+  <div class="col-md-2">
+
+    <h2>Companies</h2>
+    Search: <input ng-model="query.businessName">
+
+  </div>
+  <div class="col-md-10">
+
+  <table class="table table-hover">
+    <tr>
+      <td>_id</td>
+      <td>businessName</td>
+      <td>reviewerId</td>
+      <td>comment</td>
+      <td>rating</td>
+    </tr>
+    <tr ng-repeat="review in reviews|filter:query">
+      <td><a href="#/reviews/{{review._id}}">{{review._id}}</a></td>
+      <td>{{review.businessName}}</td>
+      <td><a href="#/members/{{review.reviewerId}}">{{review.reviewerId}}</a></td>
+      <td>{{review.comment}}</td>
+      <td>{{review.rating}}</td>
+    </tr>
+  </table>
+</div>
+
+</div>

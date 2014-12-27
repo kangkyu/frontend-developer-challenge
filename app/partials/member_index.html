@@ -2,7 +2,7 @@
 <div ng-controller="MemberIndexCtrl">
 
   <div class="col-md-2">
-    
+
     <h2>Reviewers</h2>
     <div ng-repeat="member in members">
       <a ng-click="query._id = member._id">{{ member.firstName + " " + member.lastName }}</a>
