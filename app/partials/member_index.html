@@ -14,18 +14,20 @@
 
     <table class="table table-hover">
       <tr>
+        <th>memberId</th>
         <th>firstName</th>
         <th>lastName</th>
         <th>screenName</th>
         <th>location</th>
       </tr>
       <tr ng-repeat="member in members | filter:query">
+        <td><a href="#/members/{{member._id}}">{{member._id}}</a></td>
         <td>{{member.firstName}}</td>
         <td>{{member.lastName}}</td>
         <td>{{member.screenName}}</td>
         <td>{{member.location}}</td>
       </tr>
-    </table>    
+    </table>
 
   </div>
 </div>
